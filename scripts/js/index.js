@@ -5,7 +5,10 @@ if (typeof axios === 'undefined') {
 async function generateMetaTags() {
         const fxEmbedApi = `https://api.fxtwitter.com/${(window.location.pathname.split("/")[1])}/${(window.location.pathname.split("/")[2])}/${(window.location.pathname.split("/")[3])}`;
         const response = await axios.get(fxEmbedApi);
-        if (!response.ok) {
+        if (response.status !== 200) {
+            return `<h1>${response.code} : An Error Occurred!</h1>
+            <p> ${response.message}
+            `
             throw new Error(`FxEmbed API error: ${response.status}`);
         }
         const data = await response.json();
