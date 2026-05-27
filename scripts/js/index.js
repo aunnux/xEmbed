@@ -3,7 +3,6 @@ if (typeof axios === 'undefined') {
     console.error("Axios failed to load.");
 }
 async function generateMetaTags() {
-    try {
         const fxEmbedApi = `https://api.fxtwitter.com/${(window.location.pathname.split("/")[1])}/${(window.location.pathname.split("/")[2])}/${(window.location.pathname.split("/")[3])}`;
         const response = await axios.get(fxEmbedApi);
         if (!response.ok) {
@@ -35,10 +34,6 @@ ${metaTags}
 </html>
         `.trim();
         return html;
-
-    } catch (err) {
-        console.error("Error:", err.message);
-    }
 }
 function escapeHtml(str) {
     return String(str)
