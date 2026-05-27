@@ -11,7 +11,7 @@ async function generateMetaTags() {
             `
             throw new Error(`FxEmbed API error: ${response.status}`);
         }
-        const data = await response.json();
+        const data = await response.data
         console.log(data.tweet.media.all[0].thumbnail_url)
         const metaTags = `
 <meta property="og:title" content="${escapeHtml(data.tweet?.author?.screen_name || '')}">
