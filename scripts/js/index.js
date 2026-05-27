@@ -2,9 +2,9 @@
 if (typeof axios === 'undefined') {
     console.error("Axios failed to load.");
 }
-const fxEmbedApi = `https://api.fxtwitter.com/${(window.location.pathname)}`;
 async function generateMetaTags() {
     try {
+        const fxEmbedApi = `https://api.fxtwitter.com/${(window.location.pathname.split("/")[1])}/${(window.location.pathname.split("/")[3])}/${(window.location.pathname.split("/")[3])}`;
         const response = await fetch(fxEmbedApi);
         if (!response.ok) {
             throw new Error(`FxEmbed API error: ${response.status}`);
